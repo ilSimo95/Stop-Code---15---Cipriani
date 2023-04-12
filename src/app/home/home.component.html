@@ -1,0 +1,28 @@
+<div class="container" id="#mytable">
+    <table *ngIf="corsi" class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titolo</th>
+                <th>Durata</th>
+                <th>Costo</th>
+                <th>Docente</th>
+                <th>Data Partenza</th>
+                <th>N. Partecipanti</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of corsi">
+                <td>{{c.id}}</td>
+                <td>{{c.titolo}}</td>
+                <td>{{c.durata}}</td>
+                <td>{{c.costo}}</td>
+                <td>{{c.docente}}</td>
+                <td>{{c.data_partenza}}</td>
+                <td *ngIf="'{{c.n_partecipanti}}'">{{c.n_partecipanti}}</td>
+                <td><a [routerLink]="['/corsi-detail', c.id]"><i class="bi bi-eye-fill"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

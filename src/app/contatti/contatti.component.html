@@ -1,0 +1,34 @@
+<form #laForm="ngForm" (ngSubmit)="send()" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="input_name" class="form-label">Nome</label>
+        <input type="text" #nome="ngModel" [(ngModel)]="model.nome" class="form-control" id="input_name" name="input_name" required>
+        <div class="errore" *ngIf="nome.hasError('required') && nome.touched">
+            Inserisci il tuo nome!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="validationCustom01" class="form-label">E-mail</label>
+        <input type="email" #email="ngModel" [(ngModel)]="model.email" class="form-control" id="validationCustom01" name="input_mail" placeholder="name@example.com" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
+        <div class="errore" *ngIf="email.hasError('pattern') && email.touched">
+            Inserisci una mail valida!
+        </div>
+        <div class="errore" *ngIf="email.hasError('required') && email.touched">
+            Inserisci la tua mail mail!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="input_phone" class="form-label">Telefono</label>
+        <input type="tel" #telefono="ngModel" [(ngModel)]="model.telefono" class="form-control" id="input_phone" name="input_phone" required>
+        <div class="errore" *ngIf="telefono.hasError('required') && telefono.touched">
+            Inserisci il tuo numero di telefono!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="input_message" class="form-label">Messaggio</label>
+        <textarea class="form-control" #messaggio="ngModel" [(ngModel)]="model.messaggio" id="input_message" name="input_message" rows="3" required></textarea>
+         <div class="errore" *ngIf="messaggio.hasError('required') && messaggio.touched">
+            Inserisci un messaggio!
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!laForm.form.valid">INVIA</button>
+</form>
